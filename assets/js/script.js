@@ -7,11 +7,13 @@ let chartInstance = null;
 
 const getMonedas = async () => {
     try {
-        const res = await fetch("https://mindicador.cl/api/");
+        const url = encodeURIComponent("https://mindicador.cl/api/")
+        const res = await fetch(`https://corsproxy.io/?${url}`);
         const data = await res.json();
         return data;
     } catch (error) {
         console.log(error);
+        resultado.textContent = "Error al cargar API";
     }
 };
 
