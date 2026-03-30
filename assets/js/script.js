@@ -7,10 +7,12 @@ let chartInstance = null;
 
 const getMonedas = async () => {
     try {
-        const url = encodeURIComponent("https://mindicador.cl/api/")
-        const res = await fetch(`https://corsproxy.io/?${url}`);
+        const res = await fetch("https://open.er-api.com/v6/latest(CLP");
         const data = await res.json();
-        return data;
+        return{
+            dolar: {valor: 1 / data.rates.USD},
+            euro: {valor: 1 / data.rates.EUR}
+        }
     } catch (error) {
         console.log(error);
         resultado.textContent = "Error al cargar API";
