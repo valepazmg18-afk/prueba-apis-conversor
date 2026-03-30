@@ -7,7 +7,7 @@ let chartInstance = null;
 
 const getMonedas = async () => {
     try {
-        const res = await fetch("https://open.er-api.com/v6/latest(CLP");
+        const res = await fetch("https://open.er-api.com/v6/latest/CLP");
         const data = await res.json();
         return{
             dolar: {valor: 1 / data.rates.USD},
